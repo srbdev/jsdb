@@ -17,7 +17,7 @@ rl.on('line', line => {
   line = line.trim()
 
   if (line === 'exit' || line === 'quit') {
-    quit('exit')
+    quit()
   } else if (line.length)
     console.log(dbms.input(line))
 
