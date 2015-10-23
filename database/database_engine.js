@@ -1,3 +1,4 @@
+
 /* jshint esnext: true, asi: true */
 
 const db = require('./database.js')
