@@ -10,7 +10,7 @@
  * @version 0.0.1
  */
 
-const qp = require('./queryProcessor.js')
+const qp = require('./query_processor/queryProcessor.js')
 const engine = require('./database/databaseEngine.js')
 
 let currentDb = null;
