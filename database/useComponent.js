@@ -8,7 +8,14 @@
  */
 
 const run = (databases, currentDatabase, query) => {
-  return 'Engine component not yet implemented'
+  currentDatabase = databases[query.name]
+
+  if ( !currentDatabase ) {
+    currentDatabase = {}
+    return `No database with name ${query.name}`
+  }
+
+  return `Database changed to ${query.name}`
 }
 
 exports.run = run

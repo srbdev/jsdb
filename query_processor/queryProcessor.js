@@ -30,6 +30,7 @@ const queryMap = {
   'INSERT':   insertQuery,
   'LOAD':     loadQuery,
   'SAVE':     saveQuery,
+  'SELECT':   selectQuery,
   'SHOW':     showQuery,
   'USE':      useQuery
 }

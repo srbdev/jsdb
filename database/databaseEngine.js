@@ -31,17 +31,18 @@ const componentMap = {
   'INSERT':   insertComponent,
   'LOAD':     loadComponent,
   'SAVE':     saveComponent,
+  'SELECT':   selectComponent,
   'SHOW':     showComponent,
   'USE':      useComponent
 }
 
 
 let databases = {}
-let currentDatabase = null
+let currentDatabase = {}
 
 const run = processedQuery => {
-  if (componentMap.hasOwnProperty(processedQuery.key))
-    return componentMap[processedQuery.key].run(databases, currentDatabase, processedQuery)
+  if (componentMap.hasOwnProperty(processedQuery.component))
+    return componentMap[processedQuery.component].run(databases, currentDatabase, processedQuery)
   else
     return `The following query ${JSON.stringify(processedQuery)} cannot be processed`
 }

@@ -19,7 +19,7 @@ rl.setPrompt('jsdb> ')
 rl.prompt()
 
 const quit = () => {
-  console.log('exit')
+  console.log('bye')
   process.exit(0)
 }
 
