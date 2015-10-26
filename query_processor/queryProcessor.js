@@ -6,15 +6,39 @@
  * return a packet which the database engine can process.
  *
  * @author srbdev
- * @version 0.0.1
+ * @version 0.0.2
  */
 
-exports.process = query => {
-  const qs = query.split(' ');
+const createQuery   = require('./createQuery.js')
+const deleteQuery   = require('./deleteQuery.js')
+const describeQuery = require('./describeQuery.js')
+const dropQuery     = require('./dropQuery.js')
+const importQuery   = require('./importQuery.js')
+const insertQuery   = require('./insertQuery.js')
+const loadQuery     = require('./loadQuery.js')
+const saveQuery     = require('./saveQuery.js')
+const selectQuery   = require('./selectQuery.js')
+const showQuery     = require('./showQuery.js')
+const useQuery      = require('./useQuery.js')
 
-  if (qs[0].toLowerCase() === 'load')         return { command: 'load', path: qs[1] }
-  else if (qs[0].toLowerCase() === 'show')    return { command: 'show', type: qs[1] }
-  else if (qs[0].toLowerCase() === 'create')  return { command: 'create', name: qs[1] }
-  else if (qs[0].toLowerCase() === 'use')     return { command: 'use', name: qs[1] }
-  else                                        return { error: 'Unknown command' }
+const queryMap = {
+  'CREATE':   createQuery,
+  'DELETE':   deleteQuery,
+  'DESCRIBE': describeQuery,
+  'DROP':     dropQuery,
+  'IMPORT':   importQuery,
+  'INSERT':   insertQuery,
+  'LOAD':     loadQuery,
+  'SAVE':     saveQuery,
+  'SHOW':     showQuery,
+  'USE':      useQuery
 }
+
+const process = query => {
+  const qs = query.split(' ');
+  const key = qs[0].toUpperCase()
+
+  return queryMap.hasOwnProperty(key) ? queryMap[key].process(query, key) : void 0
+}
+
+exports.process = process

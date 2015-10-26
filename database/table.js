@@ -1,7 +1,7 @@
 
 /* jshint esnext: true, asi: true */
 
-exports.table = (name, timestamp) => {
+const table = (name, timestamp) => {
   return {
     name: name,
     columns: [],
@@ -11,3 +11,5 @@ exports.table = (name, timestamp) => {
     _incrementalId: 0
   }
 }
+
+exports.table = table

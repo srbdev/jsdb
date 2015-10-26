@@ -1,7 +1,7 @@
 
 /* jshint esnext: true, asi: true */
 
-exports.database = (name, timestamp) => {
+const database = (name, timestamp) => {
   return {
     name: name,
     tables: {},
@@ -11,3 +11,5 @@ exports.database = (name, timestamp) => {
     _path: null
   }
 }
+
+exports.database = database
