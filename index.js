@@ -19,14 +19,14 @@ rl.setPrompt('jsdb> ')
 rl.prompt()
 
 const quit = () => {
-  console.log('bye')
+  console.log('Bye')
   process.exit(0)
 }
 
 rl.on('line', line => {
   line = line.trim()
 
-  if (line === 'exit' || line === 'quit')
+  if (line === 'exit' || line === 'quit' || line === 'bye')
     quit()
   else if (line.length)
     console.log( dbms.query(line) )

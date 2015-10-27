@@ -22,7 +22,12 @@ const createTable = (ram, name) => {
 }
 
 const run = (ram, query) => {
-  return query.type === 'DATABASE' ? createDatabase(ram, query.name) : createTable(ram, query.name)
+  if (query.type === 'DATABASE')
+    return createDatabase(ram, query.name)
+  else if (query.type === 'TABLE')
+    return createTable(ram, query.name)
+  else
+    return `CREATE command does not support type ${query.type}`
 }
 
 exports.run = run

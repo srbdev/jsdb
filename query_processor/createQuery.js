@@ -10,7 +10,7 @@
 const types = ['DATABASE', 'TABLE']
 
 const process = (query, key) => {
-  const qs = query.split(' ');
+  const qs = query.split(' ')
 
   if (qs.length < 3)
     return { error: true, errorMessage: 'CREATE command requires 2 arguments' }

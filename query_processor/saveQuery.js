@@ -8,7 +8,17 @@
  */
 
 const process = (query, key) => {
-  return { error: true, errorMessage: 'Command not yet implemented' }
+  const qs = query.split(' ')
+
+  if (qs.length < 2)
+    return { error: true, errorMessage: 'SAVE command requires 1 arguments' }
+
+  const name = qs[1]
+
+  return {
+    component: key,
+    name: name
+  }
 }
 
 exports.process = process
