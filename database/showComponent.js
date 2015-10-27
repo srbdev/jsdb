@@ -17,7 +17,7 @@ const showDatabases = (databases) => {
 }
 
 const showTables = (currentDatabase) => {
-  if ( !Object.keys(currentDatabase).length )
+  if ( !currentDatabase )
     return 'No database selected'
 
   const ks = Object.keys(currentDatabase.tables)
@@ -31,8 +31,8 @@ const showTables = (currentDatabase) => {
   return '\nTables:\n-------\n' + str
 }
 
-const run = (databases, currentDatabase, query) => {
-  return query.type === 'DATABASES' ? showDatabases(databases) : showTables(currentDatabase)
+const run = (ram, query) => {
+  return query.type === 'DATABASES' ? showDatabases(ram.databases) : showTables(ram.currentDatabase)
 }
 
 exports.run = run

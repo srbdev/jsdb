@@ -7,7 +7,7 @@
  * @version  0.0.1
  */
 
-const run = (databases, currentDatabase, query) => {
+const run = (ram, query) => {
   return 'Engine component not yet implemented'
 }
 

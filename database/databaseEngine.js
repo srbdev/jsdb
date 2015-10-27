@@ -37,12 +37,14 @@ const componentMap = {
 }
 
 
-let databases = {}
-let currentDatabase = {}
+let dbRAM = {
+  databases: {},
+  currentDatabase: null
+}
 
 const run = processedQuery => {
   if (componentMap.hasOwnProperty(processedQuery.component))
-    return componentMap[processedQuery.component].run(databases, currentDatabase, processedQuery)
+    return componentMap[processedQuery.component].run(dbRAM, processedQuery)
   else
     return `The following query ${JSON.stringify(processedQuery)} cannot be processed`
 }

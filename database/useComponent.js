@@ -7,15 +7,15 @@
  * @version  0.0.1
  */
 
-const run = (databases, currentDatabase, query) => {
-  currentDatabase = databases[query.name]
+const run = (ram, query) => {
+  const currDb = ram.databases[query.name]
 
-  if ( !currentDatabase ) {
-    currentDatabase = {}
+  if ( !currDb ) {
     return `No database with name ${query.name}`
   }
 
-  return `Database changed to ${query.name}`
+  ram.currentDatabase = currDb
+  return `Database changed to ${currDb.name}`
 }
 
 exports.run = run

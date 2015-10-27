@@ -9,20 +9,20 @@
 
 const db = require('./database.js')
 
-const createDatabase = (databases, name) => {
-  if (databases[name])
+const createDatabase = (ram, name) => {
+  if (ram.databases[name])
     return `Database ${name} already exists`
 
-  databases[name] = db.database(name, Date.now())
+  ram.databases[name] = db.database(name, Date.now())
   return `Database ${name} successfully created!`
 }
 
-const createTable = (databases, name) => {
+const createTable = (ram, name) => {
   return 'CREATE TABLE engine component not yet implemented'
 }
 
-const run = (databases, currentDatabase, query) => {
-  return query.type === 'DATABASE' ? createDatabase(databases, query.name) : createTable(databases, query.name)
+const run = (ram, query) => {
+  return query.type === 'DATABASE' ? createDatabase(ram, query.name) : createTable(ram, query.name)
 }
 
 exports.run = run
