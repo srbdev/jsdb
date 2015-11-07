@@ -4,10 +4,30 @@
 /**
  *
  * @author srbdev
- * @version  0.0.1
+ * @version  0.0.2
  */
 
 const types = ['DATABASE', 'TABLE']
+
+
+const processTableQuery = (key, type, name, query) => {
+  const openp = query.indexOf('(')
+  const closep = query.indexOf(')')
+
+  if ( openp === -1 || closep === -1 )
+    return { error: true, errorMessage: 'CREATE command is missing a parenthesis' }
+  if (closep < openp)
+    return { error: true, errorMessage: 'CREATE command has parentheses out of order' }
+
+  const columns = query.substring(openp + 1, closep).split(',')
+
+  return {
+    component: key,
+    type: type,
+    name: name,
+    columns: columns
+  }
+}
 
 const process = (query, key) => {
   const qs = query.split(' ')
@@ -21,11 +41,11 @@ const process = (query, key) => {
   if ( !types.includes(type) )
     return { error: true, errorMessage: `Invalid type '${type}' for the CREATE command` }
 
-  return {
-    component: key,
-    type: type,
-    name: name
-  }
+  if (type === 'DATABASE')
+    return { component: key, type: type, name: name }
+
+  if (type === 'TABLE')
+    return processTableQuery(key, type, name, query)
 }
 
 exports.process = process
