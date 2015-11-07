@@ -22,8 +22,6 @@ Follow these steps to install and run JSDB:
 
 # How It Works
 
-Under construction...
-
 <a href="#">#</a> <b>CREATE</b>
 
 Creates a database. Note that creating a database does not persist it across sessions. Use the *SAVE* command to save a database to file.
