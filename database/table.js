@@ -1,10 +1,13 @@
 
 /* jshint esnext: true, asi: true */
 
-const table = (name, timestamp) => {
+const table = (name, columns, timestamp) => {
+  let cs = ['_id']
+  columns.forEach(c => cs.push(c))
+
   return {
     name: name,
-    columns: [],
+    columns: cs,
     data: [],
     /** private */
     _createdAt: timestamp,

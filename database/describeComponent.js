@@ -17,7 +17,7 @@ const describeDatabase = (ram, name) => {
 
   let output = ''
   output += `\nDatabase: ${db.name}`
-  output += `\nCreated: ${moment(db._created_at).format('LLL')}`
+  output += `\nCreated: ${moment(db._createdAt).format('LLL')}`
   output += `\nPath: ${db._path}`
   output += `\nModified: ${db._modified}`
 
@@ -29,14 +29,32 @@ const describeDatabase = (ram, name) => {
     output += 'No tables\n'
   else {
     output += 'Tables:\n-------\n'
-    ts.each(t => output += `${t}\n`)
+    ts.forEach(t => output += `${t}\n`)
   }
 
   return output
 }
 
 const describeTable = (ram, name) => {
-  return 'DESCRIBE TABLE engine component not yet implemented'
+  const db = ram.currentDatabase
+
+  if ( !db )
+    return 'No database selected'
+
+  const table = db.tables[name]
+
+  if ( !table )
+    return `Table ${name} does not exist for database ${db.name}`
+
+  let output = ''
+  output += `\nTable: ${table.name}`
+  output += `\nCreated: ${moment(table._createdAt).format('LLL')}`
+  output += '\n\n'
+  output += 'Columns:\n--------\n'
+  table.columns.forEach(c => output += `${c.trim()}\n`)
+  output += `\nNumber of rows: ${table.data.length}\n`
+
+  return output
 }
 
 const run = (ram, query) => {

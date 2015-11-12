@@ -26,7 +26,7 @@ const showTables = (currentDatabase) => {
     return `There are no tables for database ${currentDatabase.name}`
 
   let str = '';
-  ks.each(k => str += `${k}\n`)
+  ks.forEach(k => str += `${k}\n`)
 
   return '\nTables:\n-------\n' + str
 }

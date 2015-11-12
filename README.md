@@ -11,25 +11,29 @@ Currently, JSDB only works through its command line interface.
 
     $ npm install -g babel
 
+[Mocha](http://mochajs.org/) needs to be installed globally as well for the tests to work out of the box:
+
+    $ npm install -g mocha
+
 ### Install
 Follow these steps to install and run JSDB:
 
     $ git clone https://github.com/srbdev/jsdb.git
     $ cd jsdb
     $ npm install
-    $ babel-node index.js
+    $ npm start
     jsdb> 
 
 # How It Works
 
-<a href="#">#</a> <b>CREATE</b>
+<a name="create" href="#create">#</a> <b>CREATE</b>
 
 Creates a database. Note that creating a database does not persist it across sessions. Use the *SAVE* command to save a database to file.
 
     jsdb> CREATE DATABASE db
     Database db successfully created!
 
-<a href="#">#</a> <b>SHOW</b>
+<a name="show" href="#show">#</a> <b>SHOW</b>
 
 Displays a list of loaded databases in the current session.
 
@@ -39,27 +43,27 @@ Displays a list of loaded databases in the current session.
     ---------
     db
 
-<a href="#">#</a> <b>DESCRIBE</b>
+<a name="describe" href="#describe">#</a> <b>DESCRIBE</b>
 
 Outputs information about a database.
 
     jsdb> DESCRIBE DATABASE db
 
-<a href="#">#</a> <b>USE</b>
+<a name="use" href="#use">#</a> <b>USE</b>
 
 Selects a database for the current session.
 
     jsdb> USE db
     Database changed to db
 
-<a href="#">#</a> <b>SAVE</b>
+<a name="save" href="#save">#</a> <b>SAVE</b>
 
 Saves a database to disk. It writes the file to the user's home folder using the database's name and a .jsdb extension.
 
     jsdb> SAVE db
     Database db was successfully saved in /home/srbdev/db.jsdb
 
-<a href="#">#</a> <b>LOAD</b>
+<a name="load" href="#load">#</a> <b>LOAD</b>
 
 Loads a database into the current session. It requires a full path and a database file with a .jsdb extension.
 

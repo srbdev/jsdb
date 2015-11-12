@@ -6,7 +6,7 @@ const database = (name, timestamp) => {
     name: name,
     tables: {},
     /** private */
-    _created_at: timestamp,
+    _createdAt: timestamp,
     _modified: true,
     _path: null
   }
