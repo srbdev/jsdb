@@ -7,13 +7,7 @@ Currently, JSDB only works through its command line interface.
 # Installation
 
 ### Prerequisites
-[Node](https://nodejs.org/en/) needs to be installed. Note that the code base is written in ECMAScript 6 and runs using [Babel](http://babeljs.io/). Though included in [package.json](https://github.com/srbdev/jsdb/blob/master/package.json), Babel can be installed globally via the command:
-
-    $ npm install -g babel
-
-[Mocha](http://mochajs.org/) needs to be installed globally as well for the tests to work out of the box:
-
-    $ npm install -g mocha
+[Node](https://nodejs.org/en/) needs to be installed. Note that the code base is written in ECMAScript 6 and runs using [Babel](http://babeljs.io/). JSDB also uses [Mocha](http://mochajs.org/) for its testing framework and [Chai](http://chaijs.com/) as its assertion library. 
 
 ### Install
 Follow these steps to install and run JSDB:

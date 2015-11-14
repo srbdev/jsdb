@@ -4,8 +4,8 @@
   "description": "A JavaScript SQL (lite) database that shouldn't be used for production. ",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js",
-    "test": "mocha --compilers js:babel/register --recursive"
+    "start": "./node_modules/.bin/babel-node index.js",
+    "test": "./node_modules/.bin/mocha --compilers js:babel/register --recursive"
   },
   "keywords": [
     "database",
