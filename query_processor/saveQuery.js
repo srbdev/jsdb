@@ -11,7 +11,7 @@ const process = (query, key) => {
   const qs = query.split(' ')
 
   if (qs.length < 2)
-    return { error: true, errorMessage: 'SAVE command requires 1 arguments' }
+    return { error: true, errorMessage: 'SAVE command requires 1 argument' }
 
   const name = qs[1]
 
