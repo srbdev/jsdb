@@ -27,6 +27,11 @@ Creates a database. Note that creating a database does not persist it across ses
     jsdb> CREATE DATABASE db
     Database db successfully created!
 
+Creates a table.
+
+    jsdb> CREATE TABLE Users (name, email, phone, age, sex)
+    Table Users successfully created for database db
+
 <a name="show" href="#show">#</a> <b>SHOW</b>
 
 Displays a list of loaded databases in the current session.
@@ -42,6 +47,33 @@ Displays a list of loaded databases in the current session.
 Outputs information about a database.
 
     jsdb> DESCRIBE DATABASE db
+
+    Database: db
+    Created: December 9, 2015 2:25 PM
+    Path: null
+    Modified: true
+
+    Tables:
+    -------
+    Users
+
+Outputs information about a table.
+
+    jsdb> DESCRIBE TABLE Users
+
+    Table: Users
+    Created: December 9, 2015 2:26 PM
+
+    Columns:
+    --------
+    _id
+    name
+    email
+    phone
+    age
+    sex
+
+    Number of rows: 0
 
 <a name="use" href="#use">#</a> <b>USE</b>
 

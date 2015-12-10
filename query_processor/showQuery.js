@@ -4,7 +4,7 @@
 /**
  *
  * @author srbdev
- * @version  0.0.1
+ * @version  0.0.2
  */
 
 const types = ['DATABASES', 'TABLES']
@@ -18,7 +18,7 @@ const process = (query, key) => {
   if (qs.length < 2)
     return { error: true, errorMessage: 'SHOW command requires 1 argument' }
 
-  if (qs[0] !== 'SHOW')
+  if (qs[0].toUpperCase() !== 'SHOW')
     return { error: true, errorMessage: `[ERROR] invalid query for SHOW: ${qs[0]}` }
 
   const type = qs[1].toUpperCase()

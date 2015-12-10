@@ -26,4 +26,23 @@ describe('LOAD query', () => {
     packet.component.should.equal('LOAD')
     packet.path.should.equal('/home/srbdev/db.jsdb')
   })
+
+  it('should be case insensitive', () => {
+    const packet = loadQuery.process('load /home/srbdev/db.jsdb', 'LOAD')
+    packet.should.be.an('object')
+    packet.should.include.keys('component')
+    packet.should.include.keys('path')
+    packet.component.should.equal('LOAD')
+    packet.path.should.equal('/home/srbdev/db.jsdb')
+  })
+
+  it('should only accept a LOAD query', () => {
+    const packet = loadQuery.process('BLAH this', 'LOAD')
+    packet.errorMessage.should.equal('[ERROR] invalid query for LOAD: BLAH')
+  })
+
+  it('should only accept a LOAD key', () => {
+    const packet = loadQuery.process('LOAD url', 'TEST')
+    packet.errorMessage.should.equal('[ERROR] invalid key for LOAD query: TEST')
+  })
 })

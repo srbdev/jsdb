@@ -4,7 +4,7 @@
 /**
  *
  * @author srbdev
- * @version  0.0.2
+ * @version  0.0.3
  */
 
 const types = ['DATABASE', 'TABLE']
@@ -19,7 +19,13 @@ const processTableQuery = (key, type, name, query) => {
   if (closep < openp)
     return { error: true, errorMessage: 'CREATE command has parentheses out of order' }
 
-  const columns = query.substring(openp + 1, closep).split(',')
+  let columns = query.substring(openp + 1, closep).split(',')
+  columns = columns.filter(c => c.length)
+
+  if (!columns.length)
+    return { error: true, errorMessage: 'CREATE command requires column names' }
+
+  columns = columns.map(c => c.trim())
 
   return {
     component: key,
@@ -32,8 +38,14 @@ const processTableQuery = (key, type, name, query) => {
 const process = (query, key) => {
   const qs = query.split(' ')
 
+  if (key !== 'CREATE')
+    return { error: true, errorMessage: `[ERROR] invalid key for CREATE query: ${key}` }
+
   if (qs.length < 3)
     return { error: true, errorMessage: 'CREATE command requires 2 arguments' }
+
+  if (qs[0].toUpperCase() !== 'CREATE')
+    return { error: true, errorMessage: `[ERROR] invalid query for CREATE: ${qs[0]}` }
 
   const type = qs[1].toUpperCase()
   const name = qs[2]

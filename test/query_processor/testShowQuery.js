@@ -49,6 +49,27 @@ describe('SHOW query', () => {
     packet.type.should.equal('DATABASES')
   })
 
+  it('should be case insensitive', () => {
+    let packet = showQuery.process('show tables', 'SHOW')
+    packet.should.be.an('object')
+    packet.should.include.keys('component')
+    packet.should.include.keys('type')
+    packet.component.should.equal('SHOW')
+    packet.type.should.equal('TABLES')
+
+    packet = showQuery.process('show databases', 'SHOW')
+    packet.component.should.equal('SHOW')
+    packet.type.should.equal('DATABASES')
+
+    packet = showQuery.process('show tables', 'SHOW')
+    packet.component.should.equal('SHOW')
+    packet.type.should.equal('TABLES')
+
+    packet = showQuery.process('show databases', 'SHOW')
+    packet.component.should.equal('SHOW')
+    packet.type.should.equal('DATABASES')
+  })
+
   it('should only accept a SHOW query', () => {
     const packet = showQuery.process('BLAH this', 'SHOW')
     packet.errorMessage.should.equal('[ERROR] invalid query for SHOW: BLAH')
