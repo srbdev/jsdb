@@ -1,6 +1,6 @@
 {
   "name": "@srbdev/jsdb",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A JavaScript SQL (lite) database that shouldn't be used for production. ",
   "main": "jsdb.js",
   "scripts": {
