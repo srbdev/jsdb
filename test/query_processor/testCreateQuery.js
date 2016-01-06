@@ -1,6 +1,3 @@
-
-/* jshint esnext: true, asi: true */
-
 const should = require('chai').should()
 const createQuery = require('../../query_processor/createQuery.js')
 
