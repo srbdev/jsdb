@@ -33,7 +33,8 @@ const process = (query, key) => {
   if (i === -1)
     return helper.syntaxError()
 
-  const columns = qarr.splice(0, i).join('').split(',')
+  let columns = qarr.splice(0, i).join('').split(',')
+  columns = columns.map(c => c.trim())
 
   i = qarr.indexOf('(')
   if (i === -1)
@@ -45,7 +46,8 @@ const process = (query, key) => {
   if (i === -1)
     return helper.syntaxError()
 
-  const values = qarr.splice(0, i).join('').split(',')
+  let values = qarr.splice(0, i).join('').split(',')
+  values = values.map(v => v.trim())
 
   if (columns.length !== values.length)
     return helper.error('[ERROR] columns length does not match values length')

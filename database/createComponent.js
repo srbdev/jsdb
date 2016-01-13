@@ -1,6 +1,3 @@
-
-/* jshint esnext: true, asi: true */
-
 /**
  *
  * @author srbdev

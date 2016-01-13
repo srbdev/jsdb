@@ -11,7 +11,7 @@ describe('INSERT query', () => {
   })
 
   it('should return a valid packet', () => {
-    let packet = insertQuery.process('INSERT INTO Table (columnOne,columnTwo,columnThree) VALUES(1,2,3)', 'INSERT')
+    let packet = insertQuery.process('INSERT INTO Table (columnOne,columnTwo,columnThree) VALUES (1,2,3)', 'INSERT')
     packet.should.be.an('object')
     packet.should.include.keys('component')
     packet.should.include.keys('table')
