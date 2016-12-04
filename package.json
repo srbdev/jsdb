@@ -13,7 +13,7 @@
     "sql",
     "lite"
   ],
-  "author": "srbdev <srbdevelopment@gmail.com> (http://srbdev.com/)",
+  "author": "sb (https://github.com/srbdev)",
   "dependencies": {
     "babel": "^5.8.23",
     "bson": "^0.4.19",
